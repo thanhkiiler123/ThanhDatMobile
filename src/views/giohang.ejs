@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Giỏ hàng</title>
+        <link rel="stylesheet" href="/css/PagesCSS/giohang.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/Grid1200.css" />
+        <link rel="stylesheet" href="/css/resetCSS.css" />
+        <link
+            rel="stylesheet"
+            href="/fonts/fontawesome-free-6.1.1-web/css/all.min.css"
+        />
+    </head>
+    <body>
+        <div class="app">
+            <div class="grid wide">
+                <header class="header">
+                    <div class="header_top">
+                        <a href="/">
+                            <img
+                                width="200"
+                                height="80"
+                                src="/images/logo.png"
+                                title="Thành đẹp trai"
+                            />
+                        </a>
+                        <div id="login" class="login">
+                            <% if(username){ %>
+                            <pre>Welcome back <%=username %>! </pre>
+                            <a href="/dangxuat"> Đăng xuất</a>
+                            <% } else { %>
+                            <a href="/dangnhap" title="Đăng nhập">Đăng nhập</a>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="header_bot" id="header-bot">
+                        <ul>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/gioithieu">Giới thiệu</a></li>
+                            <li>
+                                <a href="/danhmucsanpham">Danh mục sản phẩm</a>
+                            </li>
+                            <li><a href="/lienhe">Liên hệ</a></li>
+                            <li><a href="/giohang">Giỏ hàng</a></li>
+                            <a
+                                href="javascript:void(0);"
+                                style="font-size: 35px"
+                                class="icon"
+                                onclick="responsive() "
+                                >&#9776;</a
+                            >
+                        </ul>
+                    </div>
+                </header>
+                <% if(!cart) { %>
+                <p>Khong co gi trong gio hang dau dit me may`</p>
+                <% }else{ %>
+                <div class="main">
+                    <p class="sogiohang" id="sogiohang"></p>
+                    <div class="cart_product">
+                        <table class="bang">
+                            <tr>
+                                <th>Ảnh</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Tác vụ</th>
+                            </tr>
+                            <% cart.forEach((item) => { %>
+                            <tr>
+                                <td class="td1">
+                                    <img src="<%=item.images %>" class="anh" />
+                                </td>
+                                <td><p><%=item.name %></p></td>
+                                <td><p><%=item.price %> đồng</p></td>
+                                <td><p><%=item.quantity %></p></td>
+                                <form action="/remove_from_cart" method="post">
+                                    <td>
+                                        <input
+                                            type="text"
+                                            hidden
+                                            name="id"
+                                            value="<%=item.id %>"
+                                        />
+                                        <button class="xoa" type="submit">
+                                            Xóa
+                                        </button>
+                                    </td>
+                                </form>
+                            </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                    <div class="cart_price">
+                        <div class="cart--right">
+                            <!--<div class="cart__delivery-price">
+                                        <p>Tổng phí giao hàng</p>
+                                        <p  id="delivery_price">0 <span class="cart__product-price-unit">đ</span></p>
+                                    </div>
+                                    <hr>--->
+                            <div class="cart__order-total">
+                                <p>Tổng cộng:</p>
+                                <p id="order_total_price">
+                                    <%=total %>
+                                    <span class="cart__product-price-unit"
+                                        >đ</span
+                                    >
+                                </p>
+                            </div>
+                            <!-----<hr>--->
+                            <div class="cart__buttons--right">
+                                <button class="purchase-button" type="button">
+                                    Thanh toán
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <div class="footer">
+                <div class="Thongtinlienhe">
+                    <h1>Thông Tin Liên Hệ</h1>
+                    <p>Địa chỉ: Định Công, Hoàng Mai, Hà Nội</p>
+                    <p>SĐT: 1910192092</p>
+                    <p>Gmail: abc1234@gmail.com</p>
+                </div>
+                <div class="Lienket">
+                    <h1>Liên Kết</h1>
+                    <ul>
+                        <li><a href="/gioithieu">Giới thiệu</a></li>
+                        <li><a href="/lienhe">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="Lienket">
+                    <h1>Hỗ Trợ</h1>
+                    <ul>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Tư vấn khách hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="/js/base.js"></script>
+    </body>
+</html>

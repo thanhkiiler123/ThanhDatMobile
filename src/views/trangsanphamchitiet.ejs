@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Thành Đạt Mobile</title>
+        <link rel="stylesheet" href="/css/PagesCSS/trangsanphamchitiet.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/Grid1200.css" />
+        <link rel="stylesheet" href="/css/resetCSS.css" />
+        <link
+            rel="stylesheet"
+            href="/fonts/fontawesome-free-6.1.1-web/css/all.min.css"
+        />
+    </head>
+    <body>
+        <div class="app">
+            <div class="grid wide">
+                <header class="header">
+                    <div class="header_top">
+                        <a href="/">
+                            <img
+                                width="200"
+                                height="80"
+                                src="/images/logo.png"
+                                title="Thành đẹp trai"
+                            />
+                        </a>
+                        <div id="login" class="login">
+                            <% if(username){ %>
+                            <pre>Welcome back <%=username %>! </pre>
+                            <a href="/dangxuat"> Đăng xuất</a>
+                            <% } else { %>
+                            <a href="/dangnhap" title="Đăng nhập">Đăng nhập</a>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="header_bot" id="header-bot">
+                        <ul>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/gioithieu">Giới thiệu</a></li>
+                            <li>
+                                <a href="/danhmucsanpham">Danh mục sản phẩm</a>
+                            </li>
+                            <li><a href="/lienhe">Liên hệ</a></li>
+                            <li><a href="/giohang">Giỏ hàng</a></li>
+                            <a
+                                href="javascript:void(0);"
+                                style="font-size: 35px"
+                                class="icon"
+                                onclick="responsive() "
+                                >&#9776;</a
+                            >
+                        </ul>
+                    </div>
+                </header>
+                <div class="container">
+                    <div class="anh">
+                        <img
+                            src="<%=products.images %>"
+                            title="Thành đẹp trai"
+                        />
+                    </div>
+                    <div class="content">
+                        <h1 class="header-content"><%=products.name %></h1>
+                        <hr width="20px" />
+                        <p
+                            style="font-size: 45px; color: #c89979"
+                            class="header-content"
+                        >
+                            <b><%=products.price %> đồng</b>
+                        </p>
+                        <p class="header-content">
+                            Độ phân giải màn hình: <%=products.resolution %>
+                        </p>
+                        <p class="header-content">
+                            Hệ điều hành: <%=products.os %>
+                        </p>
+                        <p class="header-content">
+                            Camera trước: <%=products.frontcam %>
+                        </p>
+                        <p class="header-content">
+                            Camera sau: <%=products.backcam %>
+                        </p>
+                        <p class="header-content">
+                            RAM: <%=products.ram %>
+                        </p>
+                        <p class="header-content">
+                            ROM: <%=products.rom %>
+                        </p>
+                        <p class="header-content">
+                            Pin: <%=products.pin %>
+                        </p>
+                        <form id="form1" action="/add_to_cart" method="post">
+                            <p class="header-content">
+                                Số lượng:
+                                <button
+                                    class="btn-giam-quantity"
+                                    onclick="giam_quantity()"
+                                    type="button"
+                                >
+                                    -
+                                </button>
+                                <input type="text" value="1" class="quantity" name="quantity"/>
+                                <button
+                                    class="btn-tang-quantity"
+                                    onclick="tang_quantity()"
+                                    type="button"
+                                >
+                                    +
+                                </button><p><%=products.quantity %> sản phẩm có sẵn</p>
+                            </p>
+                            <div class="submit">
+                                <input
+                                    type="hidden"
+                                    name="id"
+                                    value="<%=products.id %>"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="images"
+                                    value="<%=products.images %>"
+                                /><input
+                                    type="hidden"
+                                    name="name"
+                                    value="<%=products.name %>"
+                                /><input
+                                    type="hidden"
+                                    name="price"
+                                    value="<%=products.price %>"
+                                />
+                                <input
+                                    type="hidden"
+                                    name="resolution"
+                                    value="<%=products.resolution %>"
+                                /><input
+                                    type="hidden"
+                                    name="os"
+                                    value="<%=products.os %>"
+                                /><input
+                                    type="hidden"
+                                    name="frontcam"
+                                    value="<%=products.frontcam %>"
+                                /><input
+                                    type="hidden"
+                                    name="backcam"
+                                    value="<%=products.backcam %>"
+                                /><input
+                                    type="hidden"
+                                    name="ram"
+                                    value="<%=products.ram %>"
+                                /><input
+                                    type="hidden"
+                                    name="rom"
+                                    value="<%=products.rom %>"
+                                /><input
+                                    type="hidden"
+                                    name="pin"
+                                    value="<%=products.pin %>"
+                                />
+                                <p
+                                    class="Themgio"
+                                    name="Themgio"
+                                    id="Themgio"
+                                    style="color: red"
+                                ></p>
+                                <button
+                                    type="submit"
+                                    class="themvaogio"
+                                    id="AddToCartButton1"
+                                >
+                                    Thêm vào giỏ hàng
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="Thongtinlienhe">
+                    <h1>Thông Tin Liên Hệ</h1>
+                    <p>Địa chỉ: Định Công, Hoàng Mai, Hà Nội</p>
+                    <p>SĐT: 1910192092</p>
+                    <p>Gmail: abc1234@gmail.com</p>
+                </div>
+                <div class="Lienket">
+                    <h1>Liên Kết</h1>
+                    <ul>
+                        <li><a href="/gioithieu">Giới thiệu</a></li>
+                        <li><a href="/lienhe">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="Lienket">
+                    <h1>Hỗ Trợ</h1>
+                    <ul>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Tư vấn khách hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <script src="/js/base.js"></script>
+        <script src="/js/trangsanphamchitiet.js"></script>
+    </body>
+</html>

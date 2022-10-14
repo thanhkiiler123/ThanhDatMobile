@@ -1,0 +1,65 @@
+﻿.container {
+    font-size: 20px;
+    margin: auto;
+    padding: 0;
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
+.anh {
+    margin: 10px 0px 0px 0px;
+    float: left;
+    height: 600px;
+    width: 500px;
+    margin-right: 5%;
+}
+
+.anh img {
+    width: 500px;
+    max-height: 600px;
+}
+
+.content {
+    position: relative;
+    float: right;
+    width: 60%;
+}
+
+.content a {
+    color: rgba(152, 151, 151, 1);
+}
+
+.header-content {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.btn-tang-quantity {
+    width: 25px;
+    height: 25px;
+}
+
+.btn-giam-quantity {
+    width: 25px;
+    height: 25px;
+}
+
+.quantity {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+}
+.themvaogio {
+    width: 221px;
+    height: 52px;
+    background-color: #c89979;
+    border: none;
+    text-align: center;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+hr {
+    border: none;
+}

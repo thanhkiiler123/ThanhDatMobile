@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Đăng nhập</title>
+        <link rel="stylesheet" href="/css/PagesCSS/dangnhap.css" />
+        <link rel="stylesheet" href="/css/base.css" />
+        <link rel="stylesheet" href="/css/Grid1200.css" />
+        <link rel="stylesheet" href="/css/resetCSS.css" />
+        <link
+            rel="stylesheet"
+            href="/fonts/fontawesome-free-6.1.1-web/css/all.min.css"
+        />
+    </head>
+    <body>
+        <div class="app">
+            <div class="grid wide">
+                <header class="header">
+                    <div class="header_top">
+                        <a href="/">
+                            <img
+                                width="200"
+                                height="80"
+                                src="/images/logo.png"
+                                title="Thành đẹp trai"
+                            />
+                        </a>
+                    </div>
+                    <div class="header_bot" id="header-bot">
+                        <ul>
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/gioithieu">Giới thiệu</a></li>
+                            <li>
+                                <a href="/danhmucsanpham">Danh mục sản phẩm</a>
+                            </li>
+                            <li><a href="/lienhe">Liên hệ</a></li>
+                            <li><a href="/giohang">Giỏ hàng</a></li>
+                            <a
+                                href="javascript:void(0);"
+                                style="font-size: 35px"
+                                class="icon"
+                                onclick="responsive() "
+                                >&#9776;</a
+                            >
+                        </ul>
+                    </div>
+                </header>
+                <div class="content">
+                    <div id="login-form" class="auth">
+                        <form action="/auth" method="post">
+                            <div class="auth__header">
+                                <h2>Đăng nhập</h2>
+                                <a href="/dangky">Đăng ký</a>
+                            </div>
+                            <div class="auth__form">
+                                <div class="form-control">
+                                    <label for="username">Tên đăng nhập</label>
+                                    <input
+                                        type="text"
+                                        id="usernameL"
+                                        placeholder="Nhập tên đăng nhập"
+                                        name="usernameL"
+                                    />
+                                </div>
+                                <div class="form-control">
+                                    <label for="password">Mật khẩu</label>
+                                    <input
+                                        type="password"
+                                        id="passwordL"
+                                        placeholder="Nhập mật khẩu"
+                                        name="passwordL"
+                                    />
+                                </div>
+                                <p id="errorL" style="color: red"></p>
+                                <button
+                                    class="auth_btn"
+                                    id="btnLogin"
+                                    type="submit"
+                                >
+                                    Đăng nhập
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="Thongtinlienhe">
+                    <h1>Thông Tin Liên Hệ</h1>
+                    <p>Địa chỉ: Định Công, Hoàng Mai, Hà Nội</p>
+                    <p>SĐT: 1910192092</p>
+                    <p>Gmail: abc1234@gmail.com</p>
+                </div>
+                <div class="Lienket">
+                    <h1>Liên Kết</h1>
+                    <ul>
+                        <li><a href="/gioithieu">Giới thiệu</a></li>
+                        <li><a href="/lienhe">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="Lienket">
+                    <h1>Hỗ Trợ</h1>
+                    <ul>
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+                        <li><a href="#">Hướng dẫn thanh toán</a></li>
+                        <li><a href="#">Chính sách bảo hành</a></li>
+                        <li><a href="#">Chính sách đổi trả</a></li>
+                        <li><a href="#">Tư vấn khách hàng</a></li>
+                    </ul>
+                </div>
+            </div>
+            <script src="/js/base.js"></script>
+            <script src="/js/dangnhap.js"></script>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+﻿/*------------------banner--------------*/
+
+.main {
+    width: 100%;
+    font-size: 16px;
+    margin: 30px 0px 0px 0px;
+    padding: 0;
+    height: auto;
+}
+.main .bang {
+    text-align: center;
+    width: 100%;
+}
+/**.bang,th,td {
+    border:2px solid red;
+    border-collapse: collapse;
+}**/
+.td1 {
+    width: 150px;
+    height: 150px;
+}
+.main .cart_product {
+    width: 70%;
+    float: left;
+    height: auto;
+    text-align: center;
+}
+.main .cart_price {
+    width: 30%;
+    float: right;
+    background: red;
+    height: 100%;
+}
+.anh {
+    height: 70%;
+    width: 70%;
+}
+.xoa {
+    width: 80px;
+    height: 40px;
+    background: red;
+    color: aliceblue;
+    border: 0px solid white;
+    border-radius: 4px;
+}
+
+/*---------Thanh toán--------*/
+.main .cart_price {
+    width: 30%;
+    height: 350px;
+    border-radius: 8px;
+    background-color: burlywood;
+}
+.main .cart--right {
+    text-align: center;
+}
+.main .cart--right .cart__title--right {
+    margin: 50px;
+}
+.main .cart--right .cart__products-total-price {
+    margin: 50px;
+}
+#order_total_price {
+    color: red;
+    margin: 10px;
+}
+.main .cart--right cart__order-total {
+    margin: 20px;
+}
+.purchase-button {
+    width: 150px;
+    height: 25px;
+    color: white;
+    background-color: darkcyan;
+    border-radius: 4px;
+    border: 0px;
+}
+/*.main .cart--right .cart__product-price-unit {
+    margin:15px;
+}*/

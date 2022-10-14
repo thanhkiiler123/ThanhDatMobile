@@ -1,0 +1,196 @@
+/*------------------banner--------------*/
+
+.banner {
+    width: 100%;
+    max-height: 600px auto;
+    /***background-image: url('../images/banner-1.jpg');**/
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.banner img {
+    height: 450px;
+    width: 100%;
+}
+
+/*---------Trưng bày sản phẩm----------*/
+.sanpham {
+    width: 100%;
+    height: 600px;
+    background-color: white;
+    margin: 0px auto;
+}
+
+.h1 {
+    float: left;
+    margin-left: 70px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    color: #1c1c1c;
+    clear: both;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.sanpham .sanphambanchay {
+    box-sizing: border-box;
+    border: 2px solid #dbcea7;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sanphambanchay a {
+    background-color: transparent;
+    border: 1px solid #dbcea7;
+}
+
+.sanpham .sanphambanchay img {
+    width: 100%;
+    height: 70%;
+    margin: 12px 0px;
+}
+
+.sanpham .sanphambanchay_gia {
+    box-sizing: border-box;
+    border-top: 2px solid #dbcea7;
+    border-radius: 2px;
+    outline: none;
+    text-align: center;
+    padding-top: 20px;
+    line-height: 1.7;
+}
+
+.sanpham .sanphambanchay_gia p {
+    color: #c89979;
+}
+
+.sanpham2 {
+    width: 100%;
+    height: 600px;
+    background-color: white;
+    margin: 0px auto;
+}
+
+.sanpham2 .sanphamphobien {
+    box-sizing: border-box;
+    border: 2px solid #dbcea7;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sanphamphobien a {
+    background-color: transparent;
+    border: 1px solid #dbcea7;
+}
+
+.sanphamphobien img {
+    width: 100%;
+    height: 70%;
+    margin: 12px 0px;
+}
+
+.sanphamphobien_gia {
+    box-sizing: border-box;
+    border-top: 2px solid #dbcea7;
+    border-radius: 2px;
+    outline: none;
+    text-align: center;
+    padding-top: 20px;
+    line-height: 1.7;
+}
+
+.sanphamphobien_gia p {
+    color: #c89979;
+}
+
+/*tin tức*/
+.phonenews {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.tintuc {
+    height: 350px;
+    margin-left: 70px;
+    float: left;
+    border-radius: 5px;
+}
+
+.tintuc img {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 17px;
+}
+
+.tintuc h5 {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+@media screen and (max-width: 800px) {
+    .banner {
+        float: left;
+    }
+
+    .banner img {
+        height: 200px;
+    }
+
+    .phone {
+        margin: 0px;
+        display: flex;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .left,
+    .right {
+        width: 65%;
+        margin: 100px auto 100px auto;
+        height: 700px;
+        text-align: center;
+        background-position: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .h1 {
+        margin: 0px 5px;
+    }
+
+    .sanpham,
+    .sanpham2 {
+        margin: 0px auto 100px;
+        height: 350px;
+        width: 80%;
+    }
+
+    .sanpham .sanphambanchay,
+    .sanpham2 .sanphamphobien {
+        margin: 10px 10px;
+        height: 300px;
+        width: 43%;
+    }
+
+    .sanpham .sanphambanchay img,
+    .sanpham2 .sanphamphobien img {
+        height: 150px;
+    }
+    .phonenews {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .tintuc {
+        width: 60%;
+        margin: 50px auto;
+    }
+}
