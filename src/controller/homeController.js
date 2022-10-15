@@ -3,13 +3,17 @@ const pool = require("../configs/connectDB");
 
 //home
 let getHomePage = async (req, res) => {
-    const [rows, field] = await pool.execute(
-        "Select * from `products` where id > 0 and id < 15",
-    );
-    return res.render("trangchu.ejs", {
-        products: rows,
-        username: req.session.username,
-    });
+    try {
+        const [rows, field] = await pool.execute(
+            "Select * from `products` where id > 0 and id < 15",
+        );
+        return res.render("trangchu.ejs", {
+            products: rows,
+            username: req.session.username,
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 //dang ky
@@ -18,20 +22,24 @@ let getDangKyPage = (req, res) => {
 };
 
 let createNewUser = async (req, res) => {
-    let { Name, Email, userName, Password } = req.body;
-    let [rows, field] = await pool.execute(
-        "Select * from `users` where user_name = ? and email = ?",
-        [userName, Email],
-    );
-    if (rows[0] == undefined) {
-        await pool.execute(
-            "Insert into users(name,email,user_name,password) VALUES (?, ?, ?, ?)",
-            [Name, Email, userName, Password],
+    try {
+        let { Name, Email, userName, Password } = req.body;
+        let [rows, field] = await pool.execute(
+            "Select * from `users` where user_name = ? and email = ?",
+            [userName, Email],
         );
-        return res.redirect("/");
-    } else {
-        res.send('<script>alert("da co ten dn va mk");</script>');
-        res.end();
+        if (rows[0] == undefined) {
+            await pool.execute(
+                "Insert into users(name,email,user_name,password) VALUES (?, ?, ?, ?)",
+                [Name, Email, userName, Password],
+            );
+            return res.redirect("/");
+        } else {
+            res.send('<script>alert("da co ten dn va mk");</script>');
+            res.end();
+        }
+    } catch (err) {
+        next(err);
     }
 };
 
@@ -41,81 +49,109 @@ let getDangNhapPage = (req, res) => {
 };
 
 let userLogIn = async (req, res) => {
-    let username = req.body.usernameL;
-    let password = req.body.passwordL;
-    if (username && password) {
-        let [rows, field] = await pool.execute(
-            "select * from `users` where user_name = ? and password = ?",
-            [username, password],
-        );
-        if (rows[0] == undefined) {
-            res.send("Please re-enter Username and Password!");
-            res.end();
+    try {
+        let username = req.body.usernameL;
+        let password = req.body.passwordL;
+        if (username && password) {
+            let [rows, field] = await pool.execute(
+                "select * from `users` where user_name = ? and password = ?",
+                [username, password],
+            );
+            if (rows[0] == undefined) {
+                res.send("Please re-enter Username and Password!");
+                res.end();
+            } else {
+                req.session.loggedin = true;
+                req.session.username = username;
+                res.redirect("/");
+            }
         } else {
-            req.session.loggedin = true;
-            req.session.username = username;
-            res.redirect("/");
+            res.send("Please enter Username and Password!");
+            res.end();
         }
-    } else {
-        res.send("Please enter Username and Password!");
-        res.end();
+    } catch (err) {
+        next(err);
     }
 };
 
 let userLogout = async (req, res) => {
-    req.session.destroy();
-    return res.redirect("/");
+    try {
+        req.session.destroy();
+        return res.redirect("/");
+    } catch (err) {
+        next(err);
+    }
 };
 
 //danh muc san pham
 let getDanhMucSanPhamPage = async (req, res) => {
-    const [rows, field] = await pool.execute(
-        "select * from `products` where id > 15 and id < 60",
-    );
-    return res.render("danhmucsanpham.ejs", {
-        products: rows,
-        username: req.session.username,
-    });
+    try {
+        const [rows, field] = await pool.execute(
+            "select * from `products` where id > 15 and id < 60",
+        );
+        return res.render("danhmucsanpham.ejs", {
+            products: rows,
+            username: req.session.username,
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 let getIphonePage = async (req, res) => {
-    const [rows, field] = await pool.execute(
-        "Select * from `products` where id > 19 and id < 28",
-    );
-    return res.render("iPhone.ejs", {
-        products: rows,
-        username: req.session.username,
-    });
+    try {
+        const [rows, field] = await pool.execute(
+            "Select * from `products` where id > 19 and id < 28",
+        );
+        return res.render("iPhone.ejs", {
+            products: rows,
+            username: req.session.username,
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 let getSamSungPage = async (req, res) => {
-    const [rows, field] = await pool.execute(
-        "Select * from `products` where id > 29 and id < 38",
-    );
-    return res.render("samsung.ejs", {
-        products: rows,
-        username: req.session.username,
-    });
+    try {
+        const [rows, field] = await pool.execute(
+            "Select * from `products` where id > 29 and id < 38",
+        );
+        return res.render("samsung.ejs", {
+            products: rows,
+            username: req.session.username,
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 let getOppoPage = async (req, res) => {
-    const [rows, field] = await pool.execute(
-        "Select * from `products` where id > 39 and id < 48",
-    );
-    return res.render("oppo.ejs", {
-        products: rows,
-        username: req.session.username,
-    });
+    try {
+        const [rows, field] = await pool.execute(
+            "Select * from `products` where id > 39 and id < 48",
+        );
+        return res.render("oppo.ejs", {
+            products: rows,
+            username: req.session.username,
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 let getXiaoMiPage = async (req, res) => {
-    const [rows, field] = await pool.execute(
-        "Select * from `products` where id > 49 and id < 58",
-    );
-    return res.render("xiaomi.ejs", {
-        products: rows,
-        username: req.session.username,
-    });
+    try {
+        const [rows, field] = await pool.execute(
+            "Select * from `products` where id > 49 and id < 58",
+        );
+        return res.render("xiaomi.ejs", {
+            products: rows,
+            username: req.session.username,
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 //gio hang
@@ -190,15 +226,19 @@ let getLienHePage = (req, res) => {
 
 //single san pham
 let getTrangSanPhamChiTietPage = async (req, res) => {
-    let productId = req.params.productId;
-    let [rows, field] = await pool.execute(
-        "select * from `products` where id = ?",
-        [productId],
-    );
-    return res.render("trangsanphamchitiet.ejs", {
-        products: rows[0],
-        username: req.session.username,
-    });
+    try {
+        let productId = req.params.productId;
+        let [rows, field] = await pool.execute(
+            "select * from `products` where id = ?",
+            [productId],
+        );
+        return res.render("trangsanphamchitiet.ejs", {
+            products: rows[0],
+            username: req.session.username,
+        });
+    } catch (err) {
+        next(err);
+    }
 };
 
 let thanhtoan = (req, res) => {
