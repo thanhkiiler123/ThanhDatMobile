@@ -10,5 +10,9 @@ function giam_quantity() {
 
 function tang_quantity() {
     quantity += 1;
+    if (quantity > Number(document.querySelector(".quantity_kho").innerHTML)) {
+        quantity = Number(document.querySelector(".quantity_kho").innerHTML);
+    }
+
     document.querySelector(".quantity").value = quantity.toString();
 }

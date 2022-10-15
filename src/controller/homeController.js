@@ -163,7 +163,7 @@ let add_to_cart = (req, res) => {
         var cart = req.session.cart;
     }
     calculateTotal(cart, req);
-    return res.redirect("/giohang");
+    return res.redirect("/danhmucsanpham");
 };
 
 let remove_from_cart = (req, res) => {
@@ -201,6 +201,16 @@ let getTrangSanPhamChiTietPage = async (req, res) => {
     });
 };
 
+let thanhtoan = (req, res) => {
+    let id = req.body.id;
+    let quantity = req.body.quantity;
+    let order = { id, quantity };
+    console.log(order);
+    if (id) {
+        for (let i = 0; i < id.length; i++) {}
+    }
+};
+
 module.exports = {
     getHomePage,
     getDangKyPage,
@@ -219,4 +229,5 @@ module.exports = {
     getGioiThieuPage,
     getLienHePage,
     getTrangSanPhamChiTietPage,
+    thanhtoan,
 };

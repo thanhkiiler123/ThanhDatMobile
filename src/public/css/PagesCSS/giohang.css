@@ -30,6 +30,10 @@
     float: right;
     background: red;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
 }
 .anh {
     height: 70%;

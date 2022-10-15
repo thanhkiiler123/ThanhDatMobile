@@ -32,6 +32,8 @@ const initWebRoute = (app) => {
         "/trangsanphamchitiet/:productId",
         homeController.getTrangSanPhamChiTietPage,
     );
+    //thanh toan
+    router.post("/thanhtoan", homeController.thanhtoan);
     return app.use("/", router);
 };
 

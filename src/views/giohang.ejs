@@ -55,7 +55,12 @@
                     </div>
                 </header>
                 <% if(!cart) { %>
-                <p>Khong co gi trong gio hang dau dit me may`</p>
+                <img
+                    src="/images/empty_cart.jpg"
+                    alt="Thành đẹp trai"
+                    width="100%"
+                    height="850px"
+                />
                 <% }else{ %>
                 <div class="main">
                     <p class="sogiohang" id="sogiohang"></p>
@@ -96,10 +101,10 @@
                     <div class="cart_price">
                         <div class="cart--right">
                             <!--<div class="cart__delivery-price">
-                                        <p>Tổng phí giao hàng</p>
-                                        <p  id="delivery_price">0 <span class="cart__product-price-unit">đ</span></p>
-                                    </div>
-                                    <hr>--->
+                                <p>Tổng phí giao hàng</p>
+                                <p  id="delivery_price">0 <span class="cart__product-price-unit">đ</span></p>
+                            </div>
+                            <hr>--->
                             <div class="cart__order-total">
                                 <p>Tổng cộng:</p>
                                 <p id="order_total_price">
@@ -110,11 +115,30 @@
                                 </p>
                             </div>
                             <!-----<hr>--->
-                            <div class="cart__buttons--right">
-                                <button class="purchase-button" type="button">
-                                    Thanh toán
-                                </button>
-                            </div>
+                            <form action="/thanhtoan" method="post">
+                                <div class="cart__buttons--right">
+                                    <% cart.forEach((item) => { %>
+                                    <input
+                                        type="text"
+                                        hidden
+                                        name="id"
+                                        value="<%=item.id %>"
+                                    />
+                                    <input
+                                        type="text"
+                                        hidden
+                                        name="quantity"
+                                        value="<%=item.quantity %>"
+                                    />
+                                    <% }) %>
+                                    <button
+                                        class="purchase-button"
+                                        type="submit"
+                                    >
+                                        Thanh toán
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
