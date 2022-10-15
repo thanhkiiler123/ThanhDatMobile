@@ -254,12 +254,10 @@ let thanhtoan = (req, res) => {
             );
         }
         res.send('<script>alert("Mua hang thanh cong");</script>');
-        res.end();
-        return res.redirect("/danhmucsanpham");
+        return res.end();
     } else {
         res.send('<script>alert("Khong co gi trong gio hang");</script>');
-        res.end();
-        return res.redirect("/danhmucsanpham");
+        return res.end();
     }
 };
 
