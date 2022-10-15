@@ -2,7 +2,7 @@ const { json } = require("body-parser");
 const pool = require("../configs/connectDB");
 
 //home
-let getHomePage = async (req, res) => {
+let getHomePage = async (req, res, next) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 0 and id < 15",
@@ -21,7 +21,7 @@ let getDangKyPage = (req, res) => {
     return res.render("dangky.ejs");
 };
 
-let createNewUser = async (req, res) => {
+let createNewUser = async (req, res, next) => {
     try {
         let { Name, Email, userName, Password } = req.body;
         let [rows, field] = await pool.execute(
@@ -48,7 +48,7 @@ let getDangNhapPage = (req, res) => {
     return res.render("dangnhap.ejs");
 };
 
-let userLogIn = async (req, res) => {
+let userLogIn = async (req, res, next) => {
     try {
         let username = req.body.usernameL;
         let password = req.body.passwordL;
@@ -74,7 +74,7 @@ let userLogIn = async (req, res) => {
     }
 };
 
-let userLogout = async (req, res) => {
+let userLogout = async (req, res, next) => {
     try {
         req.session.destroy();
         return res.redirect("/");
@@ -84,7 +84,7 @@ let userLogout = async (req, res) => {
 };
 
 //danh muc san pham
-let getDanhMucSanPhamPage = async (req, res) => {
+let getDanhMucSanPhamPage = async (req, res, next) => {
     try {
         const [rows, field] = await pool.execute(
             "select * from `products` where id > 15 and id < 60",
@@ -98,7 +98,7 @@ let getDanhMucSanPhamPage = async (req, res) => {
     }
 };
 
-let getIphonePage = async (req, res) => {
+let getIphonePage = async (req, res, next) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 19 and id < 28",
@@ -112,7 +112,7 @@ let getIphonePage = async (req, res) => {
     }
 };
 
-let getSamSungPage = async (req, res) => {
+let getSamSungPage = async (req, res, next) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 29 and id < 38",
@@ -126,7 +126,7 @@ let getSamSungPage = async (req, res) => {
     }
 };
 
-let getOppoPage = async (req, res) => {
+let getOppoPage = async (req, res, next) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 39 and id < 48",
@@ -140,7 +140,7 @@ let getOppoPage = async (req, res) => {
     }
 };
 
-let getXiaoMiPage = async (req, res) => {
+let getXiaoMiPage = async (req, res, next) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 49 and id < 58",
@@ -225,7 +225,7 @@ let getLienHePage = (req, res) => {
 };
 
 //single san pham
-let getTrangSanPhamChiTietPage = async (req, res) => {
+let getTrangSanPhamChiTietPage = async (req, res, next) => {
     try {
         let productId = req.params.productId;
         let [rows, field] = await pool.execute(
