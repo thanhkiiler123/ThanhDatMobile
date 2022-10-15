@@ -247,7 +247,19 @@ let thanhtoan = (req, res) => {
     let order = { id, quantity };
     console.log(order);
     if (id) {
-        for (let i = 0; i < id.length; i++) {}
+        for (let i = 0; i < id.length; i++) {
+            pool.execute(
+                "update `products` set quantity = quantity - ? where id = ?",
+                [quantity[i], id[i]],
+            );
+        }
+        res.send('<script>alert("Mua hang thanh cong");</script>');
+        res.end();
+        return res.redirect("/danhmucsanpham");
+    } else {
+        res.send('<script>alert("Khong co gi trong gio hang");</script>');
+        res.end();
+        return res.redirect("/danhmucsanpham");
     }
 };
 
