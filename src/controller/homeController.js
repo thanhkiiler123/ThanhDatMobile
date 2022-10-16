@@ -2,7 +2,7 @@ const { json } = require("body-parser");
 const pool = require("../configs/connectDB");
 
 //home
-let getHomePage = async (req, res, next) => {
+let getHomePage = async (req, res) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 0 and id < 15",
@@ -12,7 +12,7 @@ let getHomePage = async (req, res, next) => {
             username: req.session.username,
         });
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
@@ -21,7 +21,7 @@ let getDangKyPage = (req, res) => {
     return res.render("dangky.ejs");
 };
 
-let createNewUser = async (req, res, next) => {
+let createNewUser = async (req, res) => {
     try {
         let { Name, Email, userName, Password } = req.body;
         let [rows, field] = await pool.execute(
@@ -39,7 +39,7 @@ let createNewUser = async (req, res, next) => {
             res.end();
         }
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
@@ -48,7 +48,7 @@ let getDangNhapPage = (req, res) => {
     return res.render("dangnhap.ejs");
 };
 
-let userLogIn = async (req, res, next) => {
+let userLogIn = async (req, res) => {
     try {
         let username = req.body.usernameL;
         let password = req.body.passwordL;
@@ -70,35 +70,33 @@ let userLogIn = async (req, res, next) => {
             res.end();
         }
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
-let userLogout = async (req, res, next) => {
+let userLogout = async (req, res) => {
     try {
         req.session.destroy();
         return res.redirect("/");
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
 //danh muc san pham
-let getDanhMucSanPhamPage = async (req, res, next) => {
+let getDanhMucSanPhamPage = async (req, res) => {
     try {
-        const [rows, field] = await pool.execute(
-            "select * from `products` where id > 15 and id < 60",
-        );
+        const [rows, field] = await pool.execute("select * from `products`");
         return res.render("danhmucsanpham.ejs", {
             products: rows,
             username: req.session.username,
         });
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
-let getIphonePage = async (req, res, next) => {
+let getIphonePage = async (req, res) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 19 and id < 28",
@@ -108,11 +106,11 @@ let getIphonePage = async (req, res, next) => {
             username: req.session.username,
         });
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
-let getSamSungPage = async (req, res, next) => {
+let getSamSungPage = async (req, res) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 29 and id < 38",
@@ -122,11 +120,11 @@ let getSamSungPage = async (req, res, next) => {
             username: req.session.username,
         });
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
-let getOppoPage = async (req, res, next) => {
+let getOppoPage = async (req, res) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 39 and id < 48",
@@ -136,11 +134,11 @@ let getOppoPage = async (req, res, next) => {
             username: req.session.username,
         });
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
-let getXiaoMiPage = async (req, res, next) => {
+let getXiaoMiPage = async (req, res) => {
     try {
         const [rows, field] = await pool.execute(
             "Select * from `products` where id > 49 and id < 58",
@@ -150,7 +148,7 @@ let getXiaoMiPage = async (req, res, next) => {
             username: req.session.username,
         });
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
@@ -225,7 +223,7 @@ let getLienHePage = (req, res) => {
 };
 
 //single san pham
-let getTrangSanPhamChiTietPage = async (req, res, next) => {
+let getTrangSanPhamChiTietPage = async (req, res) => {
     try {
         let productId = req.params.productId;
         let [rows, field] = await pool.execute(
@@ -237,7 +235,7 @@ let getTrangSanPhamChiTietPage = async (req, res, next) => {
             username: req.session.username,
         });
     } catch (err) {
-        next(err);
+        console.log(err);
     }
 };
 
