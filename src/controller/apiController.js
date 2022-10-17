@@ -233,9 +233,9 @@ let updateUsers = async (req, res) => {
             "Select * from `users` where email = ?",
             [email],
         );
-        if (rows[0] != undefined) {
+        if (rows[0]) {
             await pool.execute(
-                "update users set name = ?, user_name = ?, password = ? where email = ? ?",
+                "update users set name = ?, user_name = ?, password = ? where email = ?",
                 [name, user_name, password, email],
             );
             return res.status(200).json({
