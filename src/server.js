@@ -16,7 +16,7 @@ app.use(session({ secret: "secret" }));
 
 configViewEngine(app);
 initWebRoute(app);
-initAPIRoute(app);
+// initAPIRoute(app);
 // app.use(notFound);
 // app.use(errorHandlerMiddleware);
 
