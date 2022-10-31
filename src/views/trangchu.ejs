@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Trang chủ</title>
+        <link
+            rel="shortcut icon"
+            href="/images/favicon.ico?"
+            type="image/x-icon"
+        />
         <link rel="stylesheet" href="/css/PagesCSS/trangchu.css" />
         <link rel="stylesheet" href="/css/base.css" />
         <link rel="stylesheet" href="/css/Grid1200.css" />
@@ -12,6 +16,7 @@
             rel="stylesheet"
             href="/fonts/fontawesome-free-6.1.1-web/css/all.min.css"
         />
+        <title>Trang chủ</title>
     </head>
     <body>
         <div class="app">
@@ -24,6 +29,7 @@
                                 height="80"
                                 src="/images/logo.png"
                                 title="Thành đẹp trai"
+                                alt="Logo"
                             />
                         </a>
                         <div id="login" class="login">
@@ -56,7 +62,11 @@
                 </header>
                 <body class="body">
                     <div class="banner">
-                        <img id="img" src="/images/banner-1.jpg" />
+                        <img
+                            id="img"
+                            src="/images/banner-1.jpg"
+                            alt="banner 1"
+                        />
                     </div>
                     <div class="sanphambanchay">
                         <h1 class="h1">Sản phẩm bán chạy</h1>
@@ -70,6 +80,7 @@
                                         id="anh1"
                                         src="<%=products[i].images %>"
                                         title="Thành đẹp trai"
+                                        alt="product"
                                     />
                                     <div
                                         class="sanphambanchay_gia"
@@ -99,6 +110,7 @@
                                         id="anh2"
                                         src="<%=products[i].images %>"
                                         title="Thành đẹp trai"
+                                        alt="product"
                                     />
                                     <div
                                         class="sanphamphobien_gia"
@@ -125,6 +137,7 @@
                                         <img
                                             src="/images/tintuc1.jpg"
                                             title="Thành đẹp trai"
+                                            alt="news"
                                         />
                                         <h5>
                                             Realme GT Neo3T lộ sạch cấu hình với
@@ -137,6 +150,7 @@
                                         <img
                                             src="/images/tintuc2.jpg"
                                             title="Thành đẹp trai"
+                                            alt="news"
                                         />
                                         <h5>
                                             Tuần lễ Samsung: Đâu là chiếc điện
@@ -150,6 +164,7 @@
                                         <img
                                             src="/images/tintuc3.jpg"
                                             title="Thành đẹp trai"
+                                            alt="news"
                                         />
                                         <h5>
                                             Xiaomi công bố danh sách điện thoại
@@ -192,7 +207,7 @@
         <script>
             var i = 1;
             function chuyenhinh() {
-                var hinh = ["images/banner-1.jpg", "images/banner-2.jpg"];
+                var hinh = ["/images/banner-1.jpg", "/images/banner-2.jpg"];
                 document.getElementById("img").src = hinh[i];
                 i++;
                 if (i > 1) {

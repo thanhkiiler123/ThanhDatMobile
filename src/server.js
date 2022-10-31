@@ -2,6 +2,8 @@ const express = require("express");
 const configViewEngine = require("./configs/viewEngine");
 const initWebRoute = require("./route/web");
 const initAPIRoute = require("./route/api");
+const notFound = require("./middleware/not-found");
+const errorHandlerMiddleware = require("./middleware/error-handler");
 const session = require("express-session");
 require("dotenv").config();
 
@@ -15,7 +17,17 @@ app.use(session({ secret: "secret" }));
 configViewEngine(app);
 initWebRoute(app);
 initAPIRoute(app);
+app.use(notFound);
+app.use(errorHandlerMiddleware);
 
-app.listen(port, () => {
-    console.log(`${port}`);
-});
+const start = async () => {
+    try {
+        app.listen(port, () =>
+            console.log(`Server is listening on port ${port}...`),
+        );
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+start();
