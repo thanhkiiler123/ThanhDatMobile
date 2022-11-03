@@ -25,12 +25,23 @@
                     <div class="header_top">
                         <a href="/">
                             <img
-                                width="200"
-                                height="80"
                                 src="/images/logo.png"
                                 title="Thành đẹp trai"
+                                alt="Logo"
                             />
                         </a>
+                        <form action="" method="post" class="hide_on_tablet">
+                            <input type="text" value="" name="search-box" />
+                            <button type="submit">Tìm</button>
+                        </form>
+                        <div id="login" class="login">
+                            <% if(username){ %>
+                            <pre>Welcome back <%=username %>! </pre>
+                            <a href="/dangxuat"> Đăng xuất</a>
+                            <% } else { %>
+                            <a href="/dangnhap" title="Đăng nhập">Đăng nhập</a>
+                            <% } %>
+                        </div>
                     </div>
                     <div class="header_bot" id="header-bot">
                         <ul>
@@ -41,6 +52,10 @@
                             </li>
                             <li><a href="/lienhe">Liên hệ</a></li>
                             <li><a href="/giohang">Giỏ hàng</a></li>
+                            <li class="hide">
+                                <input type="text" value="" name="search-box" />
+                                <button type="submit">Tìm</button>
+                            </li>
                             <a
                                 href="javascript:void(0);"
                                 style="font-size: 35px"

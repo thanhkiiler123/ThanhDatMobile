@@ -31,7 +31,7 @@
     border: 1px solid black;
     border-radius: 4px;
     outline: none;
-    padding: 12px 14px;
+    padding: 12px 200px;
 }
 
 .header_top button[type="submit"] {
@@ -44,7 +44,6 @@
 }
 .header_top .login {
     text-decoration: none;
-    display: flex;
 }
 
 .header_top .login pre {
@@ -87,6 +86,10 @@
     color: black;
     padding: 0px 15px 0px 15px;
     font-size: 1.4rem;
+}
+
+.header_bot ul .hide {
+    display: none;
 }
 
 .header_bot a:hover {
@@ -219,14 +222,23 @@
     list-style: none;
 }
 
-@media screen and (max-width: 800px) {
-    * {
-        font-size: 13px;
+/* Mobile & Tablet */
+
+@media (max-width: 1023px) {
+    .hide_on_tablet {
+        display: none;
     }
 
     .header {
-        height: auto;
-        margin: 0;
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        top: 0;
+    }
+
+    * {
+        font-size: 13px;
     }
 
     .header_bot .icon {
@@ -265,6 +277,12 @@
 
     .header_botresponsive ul li a {
         padding: 0px;
+        font-size: 1.4rem;
+        color: black;
+    }
+
+    .header_botresponsive ul li .hide {
+        display: block;
     }
 
     .header_botresponsive ul {
@@ -277,6 +295,7 @@
 
     .header_botresponsive ul li {
         list-style: none;
+        background-color: white;
     }
 
     .header_botresponsive li {
