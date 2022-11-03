@@ -220,6 +220,23 @@ let thanhtoan = (req, res) => {
     }
 };
 
+let timkiem = asyncWrapper(async (req, res) => {
+    let search = req.query.search;
+    let [rows, field] = await pool.execute(
+        "Select * from products where name like ?",
+        ["%" + search + "%"],
+    );
+    if (rows[0] == undefined) {
+        res.send("There is no product have that name, please enter again");
+        res.end();
+    } else {
+        return res.render("danhmucsanpham.ejs", {
+            products: rows,
+            username: req.session.username,
+        });
+    }
+});
+
 module.exports = {
     getHomePage,
     getDangKyPage,
@@ -239,4 +256,5 @@ module.exports = {
     getLienHePage,
     getTrangSanPhamChiTietPage,
     thanhtoan,
+    timkiem,
 };

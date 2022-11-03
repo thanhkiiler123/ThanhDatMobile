@@ -34,6 +34,8 @@ const initWebRoute = (app) => {
     );
     //thanh toan
     router.post("/thanhtoan", homeController.thanhtoan);
+    //tim kiem
+    router.get("/timkiem", homeController.timkiem);
     return app.use("/", router);
 };
 
