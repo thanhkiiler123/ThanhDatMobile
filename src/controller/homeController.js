@@ -205,18 +205,23 @@ let thanhtoan = (req, res) => {
     let quantity = req.body.quantity;
     let order = { id, quantity };
     console.log(order);
-    if (id) {
-        for (let i = 0; i < id.length; i++) {
-            pool.execute(
-                "update `products` set quantity = quantity - ? where id = ?",
-                [quantity[i], id[i]],
-            );
+    if (req.session.loggedin){
+        if (id) {
+            for (let i = 0; i < id.length; i++) {
+                pool.execute(
+                    "update `products` set quantity = quantity - ? where id = ?",
+                    [quantity[i], id[i]],
+                );
+            }
+            res.send('<script>alert("Mua hang thanh cong");</script>');
+            return res.end();
+        } else {
+            res.send('<script>alert("Khong co gi trong gio hang");</script>');
+            return res.end();
         }
-        res.send('<script>alert("Mua hang thanh cong");</script>');
-        return res.end();
-    } else {
-        res.send('<script>alert("Khong co gi trong gio hang");</script>');
-        return res.end();
+    }
+    else{
+        return res.redirect("/dangnhap");
     }
 };
 

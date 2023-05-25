@@ -7,11 +7,12 @@ const mysql = require("mysql2/promise");
 // });
 
 const pool = mysql.createPool({
-    host: "sql12.freesqldatabase.com",
-    database: "sql12534782",
-    user: "sql12534782",
-    password: "z6KAel6pm8",
+    host: "buxpviafyttqy6i8ye78-mysql.services.clever-cloud.com",
+    user: "uucgkid0kbwed9rj",
+    database: "buxpviafyttqy6i8ye78",
+    password: "uucgkid0kbwed9rj",
     port: "3306",
 });
+
 
 module.exports = pool;
